@@ -41,7 +41,8 @@ public class UserController {
 
     /**
      * ok
-     *phoneList = null
+     * phoneList = null
+     *
      * @param user
      * @return
      */
@@ -52,7 +53,8 @@ public class UserController {
 
     /**
      * ok
-     *modifica dati utente
+     * modifica dati utente
+     *
      * @param id
      * @param user
      * @return
@@ -63,7 +65,8 @@ public class UserController {
     }
 
     /**
-     *ok
+     * ok
+     *
      * @param id
      * @param phone_id
      * @return
@@ -74,17 +77,17 @@ public class UserController {
     }
 
     /**
-     *
      * @param phone
      * @return
      */
     @PostMapping(value = "user/{id}/phone")
-    public ResponseEntity<User> createNumber(@PathVariable(value = "id") Long id ,@RequestBody Phone phone) {
-    return new ResponseEntity<>(implUserService.createNumber(id,phone),HttpStatus.OK);
+    public ResponseEntity<User> createNumber(@PathVariable(value = "id") Long id, @RequestBody Phone phone) {
+        return new ResponseEntity<>(implUserService.createNumber(id, phone), HttpStatus.OK);
     }
 
     /**
      * ok
+     *
      * @param user
      * @return
      */
