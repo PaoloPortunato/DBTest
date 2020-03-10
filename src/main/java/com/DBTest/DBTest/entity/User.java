@@ -29,12 +29,6 @@ public class User {
     private List<Phone> phoneList;
 
 
-
-
-    protected User() {
-
-    }
-
     public User(String nome, String cognome) {
         this.setNome(nome);
         this.setCognome(cognome);

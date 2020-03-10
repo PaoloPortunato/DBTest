@@ -25,8 +25,7 @@ public class Phone {
 
         private User user_id;
     */
-    protected Phone() {
-    }
+
 
     public Phone(String numero) {
         this.setNumero(numero);

@@ -58,7 +58,7 @@ public class ImplUserService implements IUserService {
     public User updatePhoneNumber(Long id, Long id_phone, Phone cell) {
         User user = findById(id);
         for (Phone phone : user.getPhoneList()) {
-            if (phone.getPhone_id() == id_phone) {
+            if (phone.getPhone_id().equals(id_phone)) {
                 settingsPhoneNumber(phone, cell);
                 phoneRepository.save(phone);
 
