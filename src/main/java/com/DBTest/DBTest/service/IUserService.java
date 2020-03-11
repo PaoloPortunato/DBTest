@@ -1,5 +1,7 @@
 package com.DBTest.DBTest.service;
 
+import com.DBTest.DBTest.DTO.PhoneDTO;
+import com.DBTest.DBTest.DTO.UserDTO;
 import com.DBTest.DBTest.entity.Phone;
 import com.DBTest.DBTest.entity.User;
 
@@ -7,17 +9,17 @@ import java.util.List;
 
 public interface IUserService {
 
-    public List<User> findAll();
+    public List<UserDTO> findAll();
 
-    public User findById(Long id);
+    public UserDTO findById(Long id);
 
-    public User addUser(User user);
+    public UserDTO addUser(UserDTO userDTO);
 
-    public User updateUser(Long id, User user);
+    public UserDTO updateUser(Long id, UserDTO userDTO);
 
-    public User deleteById(User user);
+    public UserDTO deleteById(Long id, UserDTO userDTO);
 
-    public User updatePhoneNumber(Long id, Long id_phone, Phone cell);
+    public UserDTO updatePhoneNumber(Long id, Long id_phone, PhoneDTO cellDTO);
 
-    public User createNumber(Long id, Phone phone);
+    public UserDTO createNumber(Long id, PhoneDTO phoneDTO);
 }

@@ -7,11 +7,12 @@ import com.DBTest.DBTest.entity.User;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 
+import java.util.ArrayList;
 import java.util.List;
 
-@Mapper(componentModel = "spring")
-public interface ResourceMapper {
 
+@Mapper(componentModel = "spring")
+public interface ResourceMapper{
 
     @Mapping(target = "nome", source = "nomeDTO")
     @Mapping(target = "cognome", source = "cognomeDTO")
@@ -37,7 +38,14 @@ public interface ResourceMapper {
     List<Phone> phoneToListDTO(UserDTO userDTO);
 
 
+    default List<UserDTO> listUserTOuserDTOList(List<User> userList) {
+        List<UserDTO> userDTOList = new ArrayList<>();
+        for (User user : userList) {
+            userDTOList.add(userToUserDTO(user));
+        }
+
+        return userDTOList;
+    }
+
+
 }
-
-
-

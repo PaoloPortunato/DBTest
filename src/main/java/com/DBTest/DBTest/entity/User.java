@@ -18,21 +18,23 @@ public class User {
     private String nome;
     @Column(name = "cognome")
     private String cognome;
-
     /**
      * JoinColumn viene usato sul lato proprietario
-     *      * lato proprietario definito sul lata "molti"
-     *
+     * * lato proprietario definito sul lata "molti"
      */
     @OneToMany(fetch = FetchType.LAZY)
-    @JoinColumn(name ="user_id")
+    @JoinColumn(name = "user_id")
     private List<Phone> phoneList;
+
+     protected User(){}
+
 
 
     public User(String nome, String cognome) {
         this.setNome(nome);
         this.setCognome(cognome);
     }
+
 
 
 }

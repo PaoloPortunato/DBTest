@@ -1,16 +1,15 @@
 package com.DBTest.DBTest.controller;
 
-import com.DBTest.DBTest.entity.Phone;
-import com.DBTest.DBTest.entity.User;
+import com.DBTest.DBTest.DTO.PhoneDTO;
+import com.DBTest.DBTest.DTO.UserDTO;
 import com.DBTest.DBTest.service.ImplPhoneService;
 import com.DBTest.DBTest.service.ImplUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
-@Controller
+@RestController
 public class UserController {
 
     @Autowired
@@ -31,11 +30,11 @@ public class UserController {
     /**
      * ok
      *
-     * @param id
+     * @param
      * @return
      */
     @GetMapping(value = "user/users/{id}")
-    public ResponseEntity<Object> findById(@PathVariable("id") Long id) {
+    public ResponseEntity<UserDTO> findById(@PathVariable("id") Long id) {
         return new ResponseEntity<>(implUserService.findById(id), HttpStatus.OK);
     }
 
@@ -43,12 +42,12 @@ public class UserController {
      * ok
      * phoneList = null
      *
-     * @param user
+     * @param
      * @return
      */
     @PostMapping(value = "user/")
-    public ResponseEntity<User> addUser(@RequestBody User user) {
-        return new ResponseEntity<>(implUserService.addUser(user), HttpStatus.OK);
+    public ResponseEntity<UserDTO> addUser(@RequestBody UserDTO userDTO) {
+        return new ResponseEntity<>(implUserService.addUser(userDTO), HttpStatus.OK);
     }
 
     /**
@@ -56,12 +55,12 @@ public class UserController {
      * modifica dati utente
      *
      * @param id
-     * @param user
+     * @param
      * @return
      */
     @PutMapping(value = "user/")
-    public ResponseEntity<Object> updateUser(@RequestParam Long id, @RequestBody User user) {
-        return new ResponseEntity<>(implUserService.updateUser(id, user), HttpStatus.OK);
+    public ResponseEntity<UserDTO> updateUser(@RequestParam Long id, @RequestBody UserDTO userDTO) {
+        return new ResponseEntity<>(implUserService.updateUser(id, userDTO), HttpStatus.OK);
     }
 
     /**
@@ -72,27 +71,29 @@ public class UserController {
      * @return
      */
     @PutMapping(value = "user/{id}/phone/{phone_id}")
-    public ResponseEntity<User> updatePhoneNumber(@PathVariable(value = "id") Long id, @PathVariable(value = "phone_id") Long phone_id, @RequestBody Phone phone) {
-        return new ResponseEntity<>(implUserService.updatePhoneNumber(id, phone_id, phone), HttpStatus.OK);
+    public ResponseEntity<UserDTO> updatePhoneNumber(@PathVariable(value = "id") Long id,
+                                                     @PathVariable(value = "phone_id") Long phone_id,
+                                                     @RequestBody PhoneDTO phoneDTO) {
+        return new ResponseEntity<>(implUserService.updatePhoneNumber(id, phone_id, phoneDTO), HttpStatus.OK);
     }
 
     /**
-     * @param phone
+     * @param
      * @return
      */
     @PostMapping(value = "user/{id}/phone")
-    public ResponseEntity<User> createNumber(@PathVariable(value = "id") Long id, @RequestBody Phone phone) {
-        return new ResponseEntity<>(implUserService.createNumber(id, phone), HttpStatus.OK);
+    public ResponseEntity<UserDTO> createNumber(@PathVariable(value = "id") Long id, @RequestBody PhoneDTO phoneDTO) {
+        return new ResponseEntity<>(implUserService.createNumber(id, phoneDTO), HttpStatus.OK);
     }
 
     /**
      * ok
      *
-     * @param user
+     * @param
      * @return
      */
-    @DeleteMapping(value = "user/users/delete")
-    public ResponseEntity<Object> deleteUser(@RequestBody User user) {
-        return new ResponseEntity<>(implUserService.deleteById(user), HttpStatus.OK);
+    @DeleteMapping(value = "user/users/{id}")
+    public ResponseEntity<Object> deleteUser(@PathVariable(value = "id") Long id, @RequestBody UserDTO userDTO) {
+        return new ResponseEntity<>(implUserService.deleteById(id, userDTO), HttpStatus.OK);
     }
 }

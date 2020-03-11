@@ -26,6 +26,8 @@ public class Phone {
         private User user_id;
     */
 
+     Phone(){}
+
 
     public Phone(String numero) {
         this.setNumero(numero);
