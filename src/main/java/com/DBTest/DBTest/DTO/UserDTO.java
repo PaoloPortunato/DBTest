@@ -11,11 +11,7 @@ public class UserDTO {
     private String cognomeDTO;
     private List<PhoneDTO> phoneDTOList;
 
-    public UserDTO(String nomeDTO, String cognomeDTO,List<PhoneDTO> phoneDTOList){
-        setNomeDTO(nomeDTO);
-        setCognomeDTO(cognomeDTO);
-        setPhoneDTOList(phoneDTOList);
-    }
+
 
 
 
