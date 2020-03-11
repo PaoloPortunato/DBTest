@@ -7,6 +7,7 @@ import com.DBTest.DBTest.entity.User;
 import com.DBTest.DBTest.mapper.ResourceMapper;
 import com.DBTest.DBTest.repository.PhoneRepository;
 import com.DBTest.DBTest.repository.UserRepository;
+import org.mapstruct.factory.Mappers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -17,11 +18,11 @@ import java.util.List;
 public class ImplUserService implements IUserService {
 
     @Autowired
-    UserRepository userRepository;
+    private UserRepository userRepository;
     @Autowired
-    PhoneRepository phoneRepository;
+    private PhoneRepository phoneRepository;
     @Autowired
-    ResourceMapper resourceMapper;
+    private  ResourceMapper resourceMapper;
 
     @Override
     public List<UserDTO> findAll() {
